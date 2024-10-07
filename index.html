@@ -1,69 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
 <title>Smart Cloud Control System</title>
-
 <!-- reference to Leaflet CSS -->
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-<!-- reference to Leaflet JavaScript -->
+<link rel="stylesheet" href="/assets/css/style.css" />
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-<!-- set width and height styles for map -->
-<style>
-#map {
-width: 1341px;
-height:580px;
-}
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
 
-/* css to customize Leaflet default styles  */
-.custom .leaflet-popup-tip,
-.custom .leaflet-popup-content-wrapper {
-background: #0346ce;
-color: #ffffff;
-}
-</style>
-
-</head>
-
+<!-- HEADER -->
+<header class="bg-blue-900 text-white flex justify-between items-center p-3">
+    <img src="/assets/img/logo.png" class="h-10 " alt="Logo"></a>
+<div class="flex items-center">
+<div class="font-sans font-semibold text-bold mr-2 text-sm">
+<span id="tanggalwaktu"></span> | <span id="jam"></span> : <span id="menit"></span> <span>WIB</span>
+</div>
+<div class="w-8 h-8 border-2 border-white rounded-full flex items-center justify-center">
+<i class="fas fa-user"></i>
+</div>
+</header>
+<!-- END HEADER -->
 <body>
-
-<!-- place holder for map -->
 <div id="map"></div>
-<script>
-
-//  create map object, tell it to live in 'map' div and give initial latitude, longitude, zoom values 
-var map = L.map('map', {scrollWheelZoom:true}).setView([-0.4251197,116.9913079], 15);
-
-//  add base map tiles from OpenStreetMap and attribution info to 'map' div
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-
-// create custom icon
-var firefoxIcon = L.icon({
-    iconUrl: '/assets/tag map.png',
-    iconSize: [35, 40], // size of the icon
-    popupAnchor: [0,-15]
-    });
-
-// create popup contents
-var customPopup = "<b>AREA PINTU MASUK</b><br/><img src='assets/cctv.jpg' width='400px'/>";
-
-// specify popup options 
-var customOptions =
-    {
-    'maxWidth': '500',
-    'className' : 'custom'
-    }
-
-// create marker object, pass custom icon as option, pass content and options to popup, add to map
-L.marker([-0.4322889,116.99568], {icon: firefoxIcon}).bindPopup(customPopup,customOptions).addTo(map);
-L.marker([-0.3917396,116.9894881], {icon: firefoxIcon}).bindPopup(customPopup,customOptions).addTo(map);
-L.marker([-0.4034477,116.9848197], {icon: firefoxIcon}).bindPopup(customPopup,customOptions).addTo(map);
-L.marker([-0.4090681,116.9904376], {icon: firefoxIcon}).bindPopup(customPopup,customOptions).addTo(map);
-L.marker([-0.4144393,116.9912841], {icon: firefoxIcon}).bindPopup(customPopup,customOptions).addTo(map);
-L.marker([-0.4411718,116.9917654], {icon: firefoxIcon}).bindPopup(customPopup,customOptions).addTo(map);
-L.marker([-0.4381895,117.0125196], {icon: firefoxIcon}).bindPopup(customPopup,customOptions).addTo(map);
-
-</script>
 </body>
+
+<footer class="bg-blue-900 p-5">
+            <a  class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                <img src="/assets/img/kominfo.png" class="h-12" alt="Logo" />
+                <span class="self-center text- font-semibold whitespace-nowrap dark:text-white">Dinas Komunikasi Dan Informatika Kabupaten Kutai Karta Negara</span>
+            </a>
+</footer>
+
+<script src="/assets/js/map.js"></script>
+<script src="/assets/js/marker.js"></script>
+<script src="/assets/js/time.js"></script>
 </html>
